@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { db } from '../firebase.config';
 import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import arrowRight from '../assets/svg/keyboardArrowRightIcon.svg';
+import homeIcon from '../assets/svg/homeIcon.svg';
 
 function Profile() {
   const auth = getAuth();
@@ -25,13 +27,13 @@ function Profile() {
         await updateProfile(auth.currentUser, {
           displayName: name,
         });
-        const userRef = doc(db, 'users', auth.currentUser.uid)
+        const userRef = doc(db, 'users', auth.currentUser.uid);
         await updateDoc(userRef, {
-          name
-        })
+          name,
+        });
       }
     } catch (error) {
-      toast.error('Could not update profile details ')
+      toast.error('Could not update profile details ');
     }
   };
   const onChange = (e) => {
@@ -82,6 +84,11 @@ function Profile() {
             />
           </form>
         </div>
+        <Link to='/create-listing' className="createListing">
+          <img src={homeIcon} alt="home" />
+          <p>Sell or rent your home</p>
+          <img src={arrowRight} alt="arrow right" />
+        </Link>
       </main>
     </div>
   );
