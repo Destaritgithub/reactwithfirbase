@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 function Contact() {
   const [message, setMessage] = useState('');
   const [landlord, setLandlord] = useState({});
+  // eslint-disable-next-line
   const [searchParams, setSearchParams] = useSearchParams();
   const params = useParams();
   useEffect(() => {
@@ -33,7 +34,6 @@ function Contact() {
         <main>
           <div className='contactLandlord'>
             <p className='landlordName'>
-             
               Contact
               {landlord?.name}
             </p>
